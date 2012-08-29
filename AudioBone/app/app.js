@@ -6,7 +6,7 @@
         Audiobook = Backbone.Model.extend({
             
             initialize: function () {
-
+                console.log('Audiobook model has been initialized');
             }
             
         }),
