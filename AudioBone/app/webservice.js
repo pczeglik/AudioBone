@@ -10,9 +10,8 @@ var WebService = (function ($) {
     
     return {
         getAudiobooks: function (category, cb) {
-            console.log(CONST.address[category]);
             $.ajax({
-                url: 'http://localhost/ajaxproxy/ajaxproxy.php?url=' + CONST.address[category],
+                url: 'ajaxproxy.php?url=' + CONST.address[category],
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
