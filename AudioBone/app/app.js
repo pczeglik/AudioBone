@@ -1,11 +1,10 @@
 (function ($) {
     "use strict";
-    var Audiobook = Backbone.Model.extend({
 
+    var Audiobook = Backbone.Model.extend({
             initialize: function () {
                 //console.log('Audiobook model has been initialized');
             }
-
         }),
 
         AudiobookView = Backbone.View.extend({
@@ -13,7 +12,6 @@
            className: 'audiobook',
            
            initialize: function () {
-
                 this.render();
            },
 
@@ -22,38 +20,34 @@
                 this.$el.html(tmpl(this.model.toJSON()));
                 return this;
            }
-
         }),
 
         AudiobookCollection = Backbone.Collection.extend({
-
             model: Audiobook
-
         }),
 
         // MAIN VIEW
         AudiobookCollectionView = Backbone.View.extend({
 
-           el: $('#audiobook-content'),
+            el: $('#audiobook-content'),
 
-           initialize: function () {
-            var self = this;
-            WebService.getAudiobooks('recommended', function (coll) {
-                self.collection = new AudiobookCollection(coll);
-                self.render();
-                self.on('change:type', self.renderSpecificCollection, self);
-                self.collection.on('reset', self.render, self);                
-            });
+            initialize: function () {
+                var self = this;
+                WebService.getAudiobooks('recommended', function (coll) {
+                    self.collection = new AudiobookCollection(coll);
+                    self.render();
+                    self.on('change:type', self.renderSpecificCollection, self);
+                    self.collection.on('reset', self.render, self);
+                });
+            },
 
-           },
-
-           render: function () {
-               var self = this;
-               this.$el.find('article').remove();
-               _.each(this.collection.models, function (item) {
-                   self.renderAudiobook(item);
-               }, this);
-           },
+            render: function () {
+                var self = this;
+                this.$el.find('article').remove();
+                _.each(this.collection.models, function (item) {
+                    self.renderAudiobook(item);
+                }, this);
+            },
 
            renderAudiobook: function (item) {
                var audiobookView = new AudiobookView({
@@ -65,10 +59,8 @@
            renderSpecificCollection: function () {
                var self = this;
                WebService.getAudiobooks(this.type, function (coll) {
-                   console.log(coll);
                    self.collection.reset(coll);
-               });
-               
+               });               
            }
 
         }),
