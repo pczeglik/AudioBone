@@ -4,29 +4,15 @@
         <title>AudioBone</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="_css/screen.css" />
+        <script data-main="js/main" src="js/libs/require/require.js"></script>
     </head>
     <body>       
-        <div class="container">
-            <header>
-                <nav>
-                    <a href="#bestsellers">Bestsellery</a> | <a href="#recommended">Rekomendowane</a>
-                </nav>
-            </header>
-            <div id="audiobook-content"></div>            
-        </div>
-        
-        <script type="text/template" id="audiobook-template">
-            <img src="<%= MediumPicture %>" alt="<%= Title %>">
-            <h2><%= Title %></h2> 
-            <h3>Autor: <%= Author %></h3>
-            <h4>Cena: <%= ListPrice %></h4>
-        </script>
-                
-        <script type="text/javascript" src="libs/jquery.min.js"></script>
-        <script type="text/javascript" src="libs/underscore.min.js"></script>
-        <script type="text/javascript" src="libs/backbone.min.js"></script>
-        <script type="text/javascript" src="app/cache.js"></script>
-        <script type="text/javascript" src="app/webservice.js"></script>
-        <script type="text/javascript" src="app/app.js"></script>        
+        <nav>
+            <ul>
+                <li><a href="#bestsellers">Bestsellery</a></li>
+                <li><a href="#recommended">Rekomendowane</a></li>
+            </ul>
+        </nav>
+        <div id="container"></div>
     </body>
 </html>
